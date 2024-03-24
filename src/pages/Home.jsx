@@ -76,7 +76,7 @@ export default function Home() {
         </Collapsible>
       </motion.div>
       <motion.div
-        className={`px-0 ${category2Open ? "pb-10" : "pb-0"} border-b-2 bg-secondary/80`}
+        className={`px-0 ${category2Open ? "pb-10" : "pb-0"} border-b-2 bg-secondary/80 mb-40`}
       >
         <Collapsible open={category2Open} onOpenChange={setCategory2Open}>
           <div className="flex items-center space-x-4 w-[85%] h-16 m-auto">
