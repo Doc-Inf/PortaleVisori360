@@ -15,18 +15,20 @@ function App() {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Navbar
-        btn={<Videotape className="text-primary" onClick={handleButton} />}
-      />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/log-in" element={<LogIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-      </Routes>
-      {/* SIDEBAR */}
-      <Sidebar open={bar}>
-        <X className="w-10 h-10 me-3" onClick={handleButton} />
-      </Sidebar>
+      <div className="overflow-x-hidden">
+        <Navbar
+          btn={<Videotape className="text-primary" onClick={handleButton} />}
+        />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/log-in" element={<LogIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Routes>
+        {/* SIDEBAR */}
+        <Sidebar open={bar}>
+          <X className="w-10 h-10 me-3" onClick={handleButton} />
+        </Sidebar>
+      </div>
     </ThemeProvider>
   );
 }

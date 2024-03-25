@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Input } from "../../components/ui/input";
 import {
   Card,
@@ -10,16 +9,17 @@ import {
   CardTitle,
 } from "../../components/ui/card";
 import { Label } from "../../components/ui/label";
-import { Button } from "../../components/ui/button";
+import { Button, buttonVariants } from "../../components/ui/button";
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
   return (
     <div>
-      <Card className="absolute top-1/2 -translate-y-1/2 space-y-2 left-1/2 -translate-x-1/2 w-[60%]">
-        <CardHeader className="space-y-3">
-          <CardTitle className="m-auto">Sign-up</CardTitle>
-          <CardDescription className="text-center">
-            Welcome, type your credentials here to sign up in this site
+      <Card className="absolute top-1/2 -translate-y-1/2 space-y-2 left-1/2 -translate-x-1/2 w-[90%] md:w-[60%] max-w-screen-md">
+        <CardHeader>
+          <CardTitle className="m-auto text-4xl">Registrati</CardTitle>
+          <CardDescription className="text-justify text-pretty text-md md:text-center">
+            Benvenuto, inserisci le tue credenziali per creare un account
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -29,23 +29,26 @@ export default function SignUp() {
           </div>
           <div className="space-y-1">
             <Label htmlFor="password">Password</Label>
-            <Input
-              type="password"
-              id="password"
-              placeholder="Enter your password"
-            />
+            <Input type="password" id="password" placeholder="*******" />
           </div>
           <div className="space-y-1">
-            <Label htmlFor="c-password">Confirm password</Label>
-            <Input
-              type="password"
-              id="c-password"
-              placeholder="Confirm your password"
-            />
+            <Label htmlFor="c-password">Conferma la password</Label>
+            <Input type="password" id="c-password" placeholder="*******" />
           </div>
         </CardContent>
-        <CardFooter>
-          <Button>Sign up</Button>
+        <CardFooter className="flex flex-col gap-8 pb-4">
+          <Button className="w-full">Registrati</Button>
+          <p className="text-sm text-muted-foreground">
+            Hai già un account?
+            <Link
+              to="/log-in"
+              className={`${buttonVariants({
+                variant: "link",
+              })} text-slate-700 dark:text-slate-300`}
+            >
+              Accedi
+            </Link>
+          </p>
         </CardFooter>
       </Card>
     </div>
