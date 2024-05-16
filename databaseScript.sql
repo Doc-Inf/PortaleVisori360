@@ -3,15 +3,13 @@ DROP DATABASE IF EXISTS Visori;
 CREATE DATABASE Visori;
 USE VISORI;
 
-SET @imageDir = 'C:/Users/andre/Documents/ProgettoVisori/ContenutiDatabase/images/';
-
 CREATE TABLE Video(
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    titolo VARCHAR(50) NOT NULL,
+    titolo VARCHAR(150) NOT NULL,
     descrizione TEXT,
     autore VARCHAR(50),
     durata TIME NOT NULL,
-    image BLOB,
+    image VARCHAR(200),
     link VARCHAR(200) NOT NULL,
     lingua VARCHAR(50) NOT NULL
 );
@@ -50,17 +48,6 @@ INSERT INTO Materia(nome) VALUES ('Biologia'),
 
 SELECT "Materie inserite" as "";
 
-SET @img1 = CONCAT( @imageDir, 'WHAT_HAPPENS INSIDE_YOUR BODY.jpg');
-SET @img2 = CONCAT( @imageDir, 'Virtual_Plant_Cell.jpg');
-SET @img3 = CONCAT( @imageDir, 'Panorama_Inside_a_Cell.jpg');
-SET @img4 = CONCAT( @imageDir, 'Beginnings_of_a_Human_Cell.jpg');
-SET @img5 = CONCAT( @imageDir, '360_Guided_Tour_of_the_Cell.jpg');
-SET @img6 = CONCAT( @imageDir, 'Inside_the_Human_Body.jpg');
-SET @img7 = CONCAT( @imageDir, 'Introduction_to_the_Animal_Cell.jpg');
-SET @img8 = CONCAT( @imageDir, 'The_Nucleus_and_the_Endoplasmic_Reticulum.jpg');
-SET @img9 = CONCAT( @imageDir, 'Introduction_to_the_DNA.jpg');
-/*SET @img10 = CONCAT( @imageDir, 'Introduction_to_the_Animal_Cell.jpg');*/
-
 INSERT INTO Video(titolo,descrizione,autore,durata,image,link,lingua) VALUES ('WHAT HAPPENS INSIDE YOUR BODY?','Descrizione: Have you ever wondered how little we know about our bodies? The human body is an amazing and unique machine that triggers thousands of processes every second. Today, we\'re about to look at all the processes that are going on in the very depths of man!
     What is the easiest way to get in? 0:44
     40,000 bacteria in the human mouth 1:37
@@ -80,30 +67,42 @@ INSERT INTO Video(titolo,descrizione,autore,durata,image,link,lingua) VALUES ('W
     - The cornea and lens are pretty much collective lenses, so they invert the image when it reaches the retina of the eye. 
     - 100,000 chemical reactions occur in our brain every single second.
     - When a person swallows, the larynx usually closes in order to prevent food from getting into the respiratory tract. But while talking, the larynx might remain open.
-','BRIGHT SIDE','00:08:06',LOAD_FILE(@img1),'https://www.youtube.com/watch?v=kw9EJbezlK4','inglese'),
+','BRIGHT SIDE','00:08:06','https://img.youtube.com/vi/kw9EJbezlK4/0.jpg','https://www.youtube.com/watch?v=kw9EJbezlK4','inglese'),
 ('Virtual Plant Cell: Cell Explore, 2018','See www.plantenergy.edu.au/outreach/resources for materials to support classroom use of VPC: Cell Explore. Note, this is a curriculum-aligned resource.
 VPC: Cell Explore - immerse yourself in the inner world of a plant cell. Learn about the key organelles and structures that make up plant cells. 
 Virtual Plant Cell (VPC) is a suite of educational virtual reality experiences created by the ARC Centre of Excellence in Plant Energy Biology. Explore and learn about the sub-microscopic inner world of a plant. www.plantenergy.edu.au/VPC',
-'Plant Energy Biology','00:05:57',LOAD_FILE(@img2),'https://www.youtube.com/watch?v=rmgf0VDDlH8','Inglese'),
-('Panorama Inside a Cell','Descrizione: Tech demo for a 360° medical panorama animation illustrating the organelles inside a  cell.','Ribosome Studio','00:00:46',LOAD_FILE(@img3),'https://www.youtube.com/watch?v=HhuMYEyhPmY','Inglese'),
-('Beginnings of a Human Cell','A 3D animation about the functions and molecular components of a human cell as the cell is signaled to divide after conception.','St. Jude Children\'s Research Hospital ','00:03:06',LOAD_FILE(@img4),'https://www.youtube.com/watch?v=GdQBe2Efl9w','Inglese'),
+'Plant Energy Biology','00:05:57','https://img.youtube.com/vi/rmgf0VDDlH8/0.jpg','https://www.youtube.com/watch?v=rmgf0VDDlH8','Inglese'),
+('Panorama Inside a Cell','Descrizione: Tech demo for a 360° medical panorama animation illustrating the organelles inside a  cell.','Ribosome Studio','00:00:46','https://img.youtube.com/vi/HhuMYEyhPmY/0.jpg','https://www.youtube.com/watch?v=HhuMYEyhPmY','Inglese'),
+('Beginnings of a Human Cell','A 3D animation about the functions and molecular components of a human cell as the cell is signaled to divide after conception.','St. Jude Children\'s Research Hospital ','00:03:06','https://img.youtube.com/vi/GdQBe2Efl9w/0.jpg','https://www.youtube.com/watch?v=GdQBe2Efl9w','Inglese'),
 ('360° Guided Tour of the Cell','Take a short, narrated trip through a cell to see the nucleus, DNA, ribosomes, mitochondria, and more in this immersive Virtual Reality video!
 
 HOW TO: If you are watching on an Android mobile device, you can view the animation in stereoscopic 3D by clicking the Google Cardboard icon in the lower right (Google Cardboard required). If you are watching on an iOS device (iPhone or iPad), you must download and launch the YouTube app to see the interactive video. If you are watching on a desktop browser, use the control pad in the top left corner to navigate the full 360° view (or click and drag with your mouse). To eliminate blurriness, go to Settings (gear in bottom right corner) and set Quality to the highest possible level. ',
-'Nucleus Medical Media','00:01:12',LOAD_FILE(@img5),'https://www.youtube.com/watch?v=rKS-vvhMV6E','Inglese'),
+'Nucleus Medical Media','00:01:12','https://img.youtube.com/vi/rKS-vvhMV6E/0.jpg','https://www.youtube.com/watch?v=rKS-vvhMV6E','Inglese'),
 ('VR 360 Animation - Inside the Human Body','A VR 360 demo animation produced by SciencePicture.Co featuring scenes inside the human body. 
 
-Best viewed in VR on Oculus, Vive, Google Cardboard or similar devices.','Science Picture Company','00:01:05',LOAD_FILE(@img6),'https://www.youtube.com/watch?v=j_1spv3n7jA','Inglese'),
-('Chapter 1: Introduction to the Animal Cell','This is the first sample video in the AP Biology VR series, created in collaboration with the School of Interactive Computing at Georgia Tech. For more such sample videos, be sure to follow our YouTube channel!','Inspirit','',LOAD_FILE(@img7),'00:05:30','Inglese'),
+Best viewed in VR on Oculus, Vive, Google Cardboard or similar devices.','Science Picture Company','00:01:05','https://img.youtube.com/vi/j_1spv3n7jA/0.jpg','https://www.youtube.com/watch?v=j_1spv3n7jA','Inglese'),
+('Chapter 1: Introduction to the Animal Cell','This is the first sample video in the AP Biology VR series, created in collaboration with the School of Interactive Computing at Georgia Tech. For more such sample videos, be sure to follow our YouTube channel!','Inspirit','00:05:30','https://img.youtube.com/vi/PzxxEVdM1xI/0.jpg','https://www.youtube.com/watch?v=PzxxEVdM1xI','Inglese'),
 ('The Nucleus and the Endoplasmic Reticulum','Check out free interactive science labs at https://www.inspiritvr.com
 ___________________________________________________________________________
-This is the second sample video in the AP Biology VR series, created in collaboration with the School of Interactive Computing at Georgia Tech. For more such sample videos, be sure to follow our YouTube channel!','Inspirit','00:06:18',LOAD_FILE(@img8),'https://www.youtube.com/watch?v=s1NzeCxAp7w','Inglese'),
+This is the second sample video in the AP Biology VR series, created in collaboration with the School of Interactive Computing at Georgia Tech. For more such sample videos, be sure to follow our YouTube channel!','Inspirit','00:06:18','https://img.youtube.com/vi/s1NzeCxAp7w/0.jpg','https://www.youtube.com/watch?v=s1NzeCxAp7w','Inglese'),
 ('Introduction to the DNA','Check out free interactive science labs at https://www.inspirit.academy/
 ___________________________________________________________________________
-This is the sixth sample video in the AP Biology VR series, created in collaboration with the School of Interactive Computing at Georgia Tech. For more such sample videos, be sure to follow our YouTube channel!','Inspirit','00:04:03',LOAD_FILE(@img9),'https://www.youtube.com/watch?v=xoSWNLSnj1g','Inglese');
+This is the sixth sample video in the AP Biology VR series, created in collaboration with the School of Interactive Computing at Georgia Tech. For more such sample videos, be sure to follow our YouTube channel!','Inspirit','00:04:03','https://img.youtube.com/vi/xoSWNLSnj1g/0.jpg','https://www.youtube.com/watch?v=xoSWNLSnj1g','Inglese'),
+('Visit the ALBA Synchrotron in 360º','Visit ALBA like you were here! Move the screen to rotate 360º and look at everything the synchrotron has to offer you. You\'ve never had the accelerator tunnel and the beamlines so close!','ALBA Synchrotron','00:46:02','https://img.youtube.com/vi/hqnaYgImUmE/0.jpg','https://youtu.be/hqnaYgImUmE','Inglese'),
+('Green Tomorrow: oceani di plastica, la minaccia da affrontare subito','L\'aggressione della plastica ai nostri mari: 150 milioni di tonnellate già accumulate negli oceani. Ogni anno 8 milioni di tonnellate in più','euronews','00:02:14','https://img.youtube.com/vi/pfszWkTKxOY/0.jpg','https://www.youtube.com/watch?v=pfszWkTKxOY','Italiano'),
+('VR 360 EARTHQUAKE SURVIVAL - Natural Disaster: Up-close 360 video','an you escape from a huge Earthquake Disaster?
+This video is a virtual simulation. A real workout that will tell you what to do in case of a Earthquake!
 
+An earthquake (also known as a quake, tremor or temblor) is the shaking of the surface of the Earth resulting from a sudden release of energy in the Earth\'s lithosphere that creates seismic waves. Earthquakes can range in intensity, from those that are so weak that they cannot be felt, to those violent enough to propel objects and people into the air and wreak destruction across entire cities. The seismicity, or seismic activity, of an area is the frequency, type, and size of earthquakes experienced over a particular time period. The word tremor is also used for non-earthquake seismic rumbling.
 
-/*('','','','',LOAD_FILE(@img9),'','Inglese');*/
+At the Earth\'s surface, earthquakes manifest themselves by shaking and displacing or disrupting the ground. When the epicenter of a large earthquake is located offshore, the seabed may be displaced sufficiently to cause a tsunami. Earthquakes can also trigger landslides and, occasionally, volcanic activity.
+
+In its most general sense, the word earthquake is used to describe any seismic event—whether natural or caused by humans—that generates seismic waves. Earthquakes are caused mostly by rupture of geological faults but also by other events such as volcanic activity, landslides, mine blasts, and nuclear tests. An earthquake\'s point of initial rupture is called its hypocenter or focus. The epicenter is the point at ground level directly above the hypocenter.','BRIGHT SIDE VR 360 VIDEOS','00:01:24','https://img.youtube.com/vi/rVdZ4ges9rU/0.jpg','https://www.youtube.com/watch?v=rVdZ4ges9rU','Inglese'),
+('Ercolano - L\'Eruzione - video 360° App 3D','Oggi, 27 giugno 2020,  vi presentiamo il nuovo video a 360° elaborato da TimeLooper per la nostra nuova App 3d realizzata da D\'Uva (info 👉 https://bit.ly/30OOU84). Nel secondo capitolo ritorniamo nel 79 d.c. durante l\'eruzione del Vesuvio, quando la colonna vulcanica collassò su sé stessa ed il primo di una serie di flussi piroclastici investì Herculaneum.. ','Parco Archeologico di Ercolano','00:02:43','https://img.youtube.com/vi/ZOZNjNVwaZY/0.jpg','https://www.youtube.com/watch?v=ZOZNjNVwaZY','Italiano'),
+('TSUNAMI-HIT SCHOOL VR/360 Video','Tsunami-hit school 360° Animation - Experience in [3D, VR, 4K] Video','VR Planet','00:03:13','https://img.youtube.com/vi/6t6KKK9yXdg/0.jpg','https://www.youtube.com/watch?v=6t6KKK9yXdg','Inglese'),
+('How the Earth was Formed #360 #4k','This 4K 360 VR video is a very immersive 3D animated educational presentation of how the earth was form. A great educational video as well as a fantastic video to demonstrate the strength of using VR for educational and training purposes in schools','Virtasia tv','00:01:46','https://img.youtube.com/vi/zw-IIkxv6G4/0.jpg','https://youtu.be/zw-IIkxv6G4','Inglese');
+
+/*('','','','','https://img.youtube.com/vi//0.jpg','','Inglese');*/
 /*('','','','',LOAD_FILE(@img10),'','Inglese');*/
 
 SELECT 'INSERIMENTO DEI VIDEO COMPLETATO' as '';
