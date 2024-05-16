@@ -1,0 +1,54 @@
+It's worth adding that, in addition to the QR codes library posted by @abaumg, 
+Google provides a QR Codes API QR Codes APImany thanks to @Toukakoukan for the link update. To use this, basically:
+
+https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Fwww.google.com%2F&choe=UTF-8
+
+300x300 is the size of the QR image you want to generate,
+the chl is the url-encoded string you want to change into a QR code, and
+the choe is the (optional) encoding.
+The link, above, gives more detail, but to use it just have the src of an image point to the manipulated value, like so:
+
+<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Fwww.google.com%2F&choe=UTF-8" title="Link to Google.com" />
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Codici QR 
+
+bookmark_border
+
+Puoi creare un codice QR all'istante con una richiesta URL GET.
+
+Panoramica
+I codici QR sono un tipo comune di codici a barre bidimensionali. Sono noti anche come hardlink o link ipertestuali del mondo fisico. 
+I codici QR memorizzano fino a 4296 caratteri alfanumerici di testo arbitrario. 
+Può trattarsi di qualsiasi testo, ad esempio URL, dati di contatto, un numero di telefono e persino una poesia. 
+I codici QR possono essere letti da un dispositivo ottico con il software appropriato. 
+Questi dispositivi spaziano dai lettori di codici QR dedicati ai cellulari.
+
+Sintassi 
+URL principale: https://chart.googleapis.com/chart?
+
+Le richieste di codici QR supportano i seguenti parametri di query dell'URL dopo il carattere ? nell'URL principale:
+
+Parametro	Obbligatorio o facoltativo	Descrizione
+cht=qr	Obbligatorio	Specifica un codice QR.
+chs=<width>x<height>	Obbligatorio	Dimensioni delle immagini.
+chl=<data>	Obbligatorio	I dati da codificare. I dati possono essere cifre (0-9), caratteri alfanumerici, byte binari di dati o Kanji. 
+Non puoi combinare i tipi di dati all'interno di un codice QR. I dati devono utilizzare la codifica URL UTF-8. 
+Tieni presente che gli URL hanno una lunghezza massima di 2000, quindi se vuoi codificare più di 2000 byte (meno gli altri caratteri URL), 
+devi inviare i dati tramite POST.
+choe=<output_encoding>	Facoltativo	Come codificare i dati nel codice QR. Ecco i valori disponibili:
+UTF-8 [valore predefinito]
+Shift_JIS
+ISO-8859-1
+chld=<error_correction_level>|<margin>	Facoltativo	
+error_correction_level: i codici QR supportano quattro livelli di correzione degli errori per consentire il recupero di dati mancanti, 
+letti erroneamente o oscurati. Si ottiene una maggiore ridondanza a costo di archiviare meno dati. Per ulteriori dettagli, vedi l'appendice. 
+Ecco i valori supportati:
+L: [valore predefinito] consente il recupero della perdita di dati fino al 7%
+M: consente il recupero fino al 15% della perdita di dati
+Q: consente il recupero fino al 25% della perdita di dati
+H: consente il recupero fino al 30% della perdita di dati
+margin: la larghezza del bordo bianco intorno alla porzione di dati del codice. Questo dato è espresso in righe, non in pixel. 
+(Vedi di seguito per sapere quali righe sono in un codice QR). Il valore predefinito è 4.

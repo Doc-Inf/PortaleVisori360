@@ -1,0 +1,11 @@
+{
+    "database" : {
+        "hostname" : "127.0.0.1",
+        "username" : "docente",
+        "password" : "vallauri",
+        "port" : "3306",
+        "dbmsName" : "mysql",
+        "dbname" : "visori",
+        "dbLibrary" : "pdo"
+    }
+}
